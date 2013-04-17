@@ -4,7 +4,7 @@ USE `univesitydb`;
 --
 -- Host: localhost    Database: univesitydb
 -- ------------------------------------------------------
--- Server version  5.5.30
+-- Server version	5.5.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `course` (
   `courseSection` varchar(45) NOT NULL,
   `meetingTime` datetime DEFAULT NULL,
   `location` varchar(45) NOT NULL,
-  `courseId` int(11) NOT NULL AUTO_INCREMENT,
+  `courseId` varchar(45) NOT NULL,
   PRIMARY KEY (`courseId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -43,14 +43,14 @@ DROP TABLE IF EXISTS `courseinstructormap`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `courseinstructormap` (
   `cIId` int(11) NOT NULL AUTO_INCREMENT,
-  `courseId` int(11) DEFAULT NULL,
+  `courseId` varchar(45) DEFAULT NULL,
   `instructorId` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cIId`),
   KEY `instructorId3_idx` (`instructorId`),
   KEY `courseId3_idx` (`courseId`),
-  CONSTRAINT `courseId3` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `instructorId3` FOREIGN KEY (`instructorId`) REFERENCES `instructor` (`instructorId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `instructorId3` FOREIGN KEY (`instructorId`) REFERENCES `instructor` (`instructorId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `courseId3` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,15 +61,15 @@ DROP TABLE IF EXISTS `coursestudentmap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `coursestudentmap` (
-  `courseId` int(11) DEFAULT NULL,
-  `studentId` varchar(45) DEFAULT NULL,
+  `courseId` varchar(45) NOT NULL,
+  `studentId` varchar(45) NOT NULL,
   `csid` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`csid`),
   KEY `studentId_idx` (`studentId`),
   KEY `courseId2_idx` (`courseId`),
-  CONSTRAINT `studentId2` FOREIGN KEY (`studentId`) REFERENCES `student` (`studentId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `courseId2` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `courseId2` FOREIGN KEY (`courseId`) REFERENCES `course` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `studentId2` FOREIGN KEY (`studentId`) REFERENCES `student` (`studentId`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `person` (
   `personId` int(11) NOT NULL AUTO_INCREMENT,
   `associatedCourses` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`personId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,4 +135,4 @@ CREATE TABLE `student` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-14 14:10:19
+-- Dump completed on 2013-04-16 17:05:15
