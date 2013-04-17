@@ -1,0 +1,86 @@
+package Connections;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import javax.jws.WebService;
+
+@WebService
+public class Service {
+
+	DatabaseConnection db = new DatabaseConnection();
+	
+	public Service() {
+
+	}
+	
+	public String addStudent(String studentId, String firstname, String lastname, String address,
+			String city, String state, int zipCode, String courseList)
+	{	
+		int personId = Integer.parseInt(addPerson(firstname,lastname, address, city, state, zipCode,courseList));
+		return db.addStudent(studentId, personId);
+	}
+	
+	public String deleteStudent(String studentId)
+	{
+		return db.deleteStudent(studentId);
+	}
+	
+	public String addInstructor(String instructorId,String firstname, String lastname, String address,
+			String city, String state, int zipCode, String courseList, 
+			String department, String meetingTime )
+	{
+		/* 
+		SimpleDateFormat parse = new SimpleDateFormat("dd. MMM yyyy hh:mm:ss");
+		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 java.util.Date parsedMeetingTime = parse.parse(meetingTime);
+		 */
+		int personId = Integer.parseInt(addPerson(firstname,lastname, address, city, state, zipCode,courseList)); 
+		return db.addInstructor(instructorId,department,personId);
+	}
+	
+	public String deleteInstructor(String instructorId)
+	{
+		return db.deleteInstructor(instructorId);
+	}
+	
+	public String addCourse(String courseName, String courseSection, String location)
+	{
+		return db.addCourse(courseName, courseSection, location);
+	}
+	
+	public String deleteCourse(String courseName)
+	{
+		return db.deleteCourse(courseName);
+	}
+	
+	private String addPerson(String firstname, String lastname, String address, String city, String state, int zipCode, String courseList)
+	{
+		return db.addPerson(firstname, lastname, address, city,state,zipCode, courseList);
+	}
+	
+	private String deletePerson(int personId)
+	{
+		return db.deletePerson(personId);
+	}
+	
+	public String assignInstructor(String courseId,String instructorId)
+	{
+		return db.assignInstructor(courseId, instructorId);
+	}
+
+	public String unAssignInstructor(String instructorId)
+	{
+		return db.unAssignInstructor(instructorId);
+	}
+	
+	public String enrollStudent(String studentId, String courseId)
+	{
+		return db.enrollStudent(courseId, studentId);
+	}
+	
+	public String unEnrollStudent(String studentId)
+	{
+		return db.unEnrollStudent(studentId);
+	}
+}

@@ -1,0 +1,72 @@
+package Connections;
+
+public class ServiceProxy implements Connections.Service {
+  private String _endpoint = null;
+  private Connections.Service service = null;
+  
+  public ServiceProxy() {
+    _initServiceProxy();
+  }
+  
+  public ServiceProxy(String endpoint) {
+    _endpoint = endpoint;
+    _initServiceProxy();
+  }
+  
+  private void _initServiceProxy() {
+    try {
+      service = (new Connections.ServiceServiceLocator()).getService();
+      if (service != null) {
+        if (_endpoint != null)
+          ((javax.xml.rpc.Stub)service)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+        else
+          _endpoint = (String)((javax.xml.rpc.Stub)service)._getProperty("javax.xml.rpc.service.endpoint.address");
+      }
+      
+    }
+    catch (javax.xml.rpc.ServiceException serviceException) {}
+  }
+  
+  public String getEndpoint() {
+    return _endpoint;
+  }
+  
+  public void setEndpoint(String endpoint) {
+    _endpoint = endpoint;
+    if (service != null)
+      ((javax.xml.rpc.Stub)service)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+    
+  }
+  
+  public Connections.Service getService() {
+    if (service == null)
+      _initServiceProxy();
+    return service;
+  }
+  
+  public java.lang.String addStudent(java.lang.String studentId, java.lang.String firstname, java.lang.String lastname, java.lang.String address, java.lang.String city, java.lang.String state, int zipCode, java.lang.String courseList) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.addStudent(studentId, firstname, lastname, address, city, state, zipCode, courseList);
+  }
+  
+  public java.lang.String addCourse(java.lang.String courseName, java.lang.String courseSection, java.lang.String location) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.addCourse(courseName, courseSection, location);
+  }
+  
+  public java.lang.String addInstructor(java.lang.String instructorId, java.lang.String firstname, java.lang.String lastname, java.lang.String address, java.lang.String city, java.lang.String state, int zipCode, java.lang.String courseList, java.lang.String department, java.lang.String meetingTime) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.addInstructor(instructorId, firstname, lastname, address, city, state, zipCode, courseList, department, meetingTime);
+  }
+  
+  public java.lang.String deleteStudent(java.lang.String studentId) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.deleteStudent(studentId);
+  }
+  
+  
+}

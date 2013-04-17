@@ -1,0 +1,91 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceService WSDL service -->
+
+  <service name="Service" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Connections"/>
+      <parameter name="wsdlServiceElement" value="ServiceService"/>
+      <parameter name="schemaQualified" value="http://Connections"/>
+      <parameter name="wsdlServicePort" value="Service"/>
+      <parameter name="className" value="Connections.ServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Service"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="listStudents" qname="operNS:listStudents" xmlns:operNS="http://Connections" returnQName="retNS:listStudentsReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="listCourse" qname="operNS:listCourse" xmlns:operNS="http://Connections" returnQName="retNS:listCourseReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="findPreson" qname="operNS:findPreson" xmlns:operNS="http://Connections" returnQName="retNS:findPresonReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="findCourse" qname="operNS:findCourse" xmlns:operNS="http://Connections" returnQName="retNS:findCourseReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="addStudent" qname="operNS:addStudent" xmlns:operNS="http://Connections" returnQName="retNS:addStudentReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstname" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastname" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipCode" xmlns:pns="http://Connections" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseList" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteCourse" qname="operNS:deleteCourse" xmlns:operNS="http://Connections" returnQName="retNS:deleteCourseReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addCourse" qname="operNS:addCourse" xmlns:operNS="http://Connections" returnQName="retNS:addCourseReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseName" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseSection" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:location" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="assignInstructor" qname="operNS:assignInstructor" xmlns:operNS="http://Connections" returnQName="retNS:assignInstructorReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:instructorId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enrollStudent" qname="operNS:enrollStudent" xmlns:operNS="http://Connections" returnQName="retNS:enrollStudentReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="displayCourseInfo" qname="operNS:displayCourseInfo" xmlns:operNS="http://Connections" returnQName="retNS:displayCourseInfoReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="unEnrollStudent" qname="operNS:unEnrollStudent" xmlns:operNS="http://Connections" returnQName="retNS:unEnrollStudentReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unAssignInstructor" qname="operNS:unAssignInstructor" xmlns:operNS="http://Connections" returnQName="retNS:unAssignInstructorReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="displayPersonInfo" qname="operNS:displayPersonInfo" xmlns:operNS="http://Connections" returnQName="retNS:displayPersonInfoReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="listInstructors" qname="operNS:listInstructors" xmlns:operNS="http://Connections" returnQName="retNS:listInstructorsReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="deleteStudent" qname="operNS:deleteStudent" xmlns:operNS="http://Connections" returnQName="retNS:deleteStudentReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addInstructor" qname="operNS:addInstructor" xmlns:operNS="http://Connections" returnQName="retNS:addInstructorReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstname" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastname" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipCode" xmlns:pns="http://Connections" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseList" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:department" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:meetingTime" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteInstructor" qname="operNS:deleteInstructor" xmlns:operNS="http://Connections" returnQName="retNS:deleteInstructorReturn" xmlns:retNS="http://Connections" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://Connections" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addStudent deleteCourse assignInstructor deleteInstructor findCourse deleteStudent displayPersonInfo displayCourseInfo addCourse unEnrollStudent unAssignInstructor findPreson addInstructor listStudents listInstructors listCourse enrollStudent"/>
+
+  </service>
+</deployment>

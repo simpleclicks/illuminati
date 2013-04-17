@@ -1,0 +1,258 @@
+<%@page contentType="text/html;charset=UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<HTML>
+<HEAD>
+<TITLE>Result</TITLE>
+</HEAD>
+<BODY>
+<H1>Result</H1>
+
+<jsp:useBean id="sampleServiceProxyid" scope="session" class="Connections.ServiceProxy" />
+<%
+if (request.getParameter("endpoint") != null && request.getParameter("endpoint").length() > 0)
+sampleServiceProxyid.setEndpoint(request.getParameter("endpoint"));
+%>
+
+<%
+String method = request.getParameter("method");
+int methodID = 0;
+if (method == null) methodID = -1;
+
+if(methodID != -1) methodID = Integer.parseInt(method);
+boolean gotMethod = false;
+
+try {
+switch (methodID){ 
+case 2:
+        gotMethod = true;
+        java.lang.String getEndpoint2mtemp = sampleServiceProxyid.getEndpoint();
+if(getEndpoint2mtemp == null){
+%>
+<%=getEndpoint2mtemp %>
+<%
+}else{
+        String tempResultreturnp3 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(getEndpoint2mtemp));
+        %>
+        <%= tempResultreturnp3 %>
+        <%
+}
+break;
+case 5:
+        gotMethod = true;
+        String endpoint_0id=  request.getParameter("endpoint8");
+            java.lang.String endpoint_0idTemp = null;
+        if(!endpoint_0id.equals("")){
+         endpoint_0idTemp  = endpoint_0id;
+        }
+        sampleServiceProxyid.setEndpoint(endpoint_0idTemp);
+break;
+case 10:
+        gotMethod = true;
+        Connections.Service getService10mtemp = sampleServiceProxyid.getService();
+if(getService10mtemp == null){
+%>
+<%=getService10mtemp %>
+<%
+}else{
+        if(getService10mtemp!= null){
+        String tempreturnp11 = getService10mtemp.toString();
+        %>
+        <%=tempreturnp11%>
+        <%
+        }}
+break;
+case 13:
+        gotMethod = true;
+        String studentId_1id=  request.getParameter("studentId16");
+            java.lang.String studentId_1idTemp = null;
+        if(!studentId_1id.equals("")){
+         studentId_1idTemp  = studentId_1id;
+        }
+        String firstname_2id=  request.getParameter("firstname18");
+            java.lang.String firstname_2idTemp = null;
+        if(!firstname_2id.equals("")){
+         firstname_2idTemp  = firstname_2id;
+        }
+        String lastname_3id=  request.getParameter("lastname20");
+            java.lang.String lastname_3idTemp = null;
+        if(!lastname_3id.equals("")){
+         lastname_3idTemp  = lastname_3id;
+        }
+        String address_4id=  request.getParameter("address22");
+            java.lang.String address_4idTemp = null;
+        if(!address_4id.equals("")){
+         address_4idTemp  = address_4id;
+        }
+        String city_5id=  request.getParameter("city24");
+            java.lang.String city_5idTemp = null;
+        if(!city_5id.equals("")){
+         city_5idTemp  = city_5id;
+        }
+        String state_6id=  request.getParameter("state26");
+            java.lang.String state_6idTemp = null;
+        if(!state_6id.equals("")){
+         state_6idTemp  = state_6id;
+        }
+        String zipCode_7id=  request.getParameter("zipCode28");
+        int zipCode_7idTemp  = Integer.parseInt(zipCode_7id);
+        String courseList_8id=  request.getParameter("courseList30");
+            java.lang.String courseList_8idTemp = null;
+        if(!courseList_8id.equals("")){
+         courseList_8idTemp  = courseList_8id;
+        }
+        java.lang.String addStudent13mtemp = sampleServiceProxyid.addStudent(studentId_1idTemp,firstname_2idTemp,lastname_3idTemp,address_4idTemp,city_5idTemp,state_6idTemp,zipCode_7idTemp,courseList_8idTemp);
+if(addStudent13mtemp == null){
+%>
+<%=addStudent13mtemp %>
+<%
+}else{
+        String tempResultreturnp14 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(addStudent13mtemp));
+        %>
+        <%= tempResultreturnp14 %>
+        <%
+}
+break;
+case 32:
+        gotMethod = true;
+        String courseName_9id=  request.getParameter("courseName35");
+            java.lang.String courseName_9idTemp = null;
+        if(!courseName_9id.equals("")){
+         courseName_9idTemp  = courseName_9id;
+        }
+        String courseSection_10id=  request.getParameter("courseSection37");
+            java.lang.String courseSection_10idTemp = null;
+        if(!courseSection_10id.equals("")){
+         courseSection_10idTemp  = courseSection_10id;
+        }
+        String location_11id=  request.getParameter("location39");
+            java.lang.String location_11idTemp = null;
+        if(!location_11id.equals("")){
+         location_11idTemp  = location_11id;
+        }
+        java.lang.String addCourse32mtemp = sampleServiceProxyid.addCourse(courseName_9idTemp,courseSection_10idTemp,location_11idTemp);
+if(addCourse32mtemp == null){
+%>
+<%=addCourse32mtemp %>
+<%
+}else{
+        String tempResultreturnp33 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(addCourse32mtemp));
+        %>
+        <%= tempResultreturnp33 %>
+        <%
+}
+break;
+case 41:
+        gotMethod = true;
+        String instructorId_12id=  request.getParameter("instructorId44");
+            java.lang.String instructorId_12idTemp = null;
+        if(!instructorId_12id.equals("")){
+         instructorId_12idTemp  = instructorId_12id;
+        }
+        String firstname_13id=  request.getParameter("firstname46");
+            java.lang.String firstname_13idTemp = null;
+        if(!firstname_13id.equals("")){
+         firstname_13idTemp  = firstname_13id;
+        }
+        String lastname_14id=  request.getParameter("lastname48");
+            java.lang.String lastname_14idTemp = null;
+        if(!lastname_14id.equals("")){
+         lastname_14idTemp  = lastname_14id;
+        }
+        String address_15id=  request.getParameter("address50");
+            java.lang.String address_15idTemp = null;
+        if(!address_15id.equals("")){
+         address_15idTemp  = address_15id;
+        }
+        String city_16id=  request.getParameter("city52");
+            java.lang.String city_16idTemp = null;
+        if(!city_16id.equals("")){
+         city_16idTemp  = city_16id;
+        }
+        String state_17id=  request.getParameter("state54");
+            java.lang.String state_17idTemp = null;
+        if(!state_17id.equals("")){
+         state_17idTemp  = state_17id;
+        }
+        String zipCode_18id=  request.getParameter("zipCode56");
+        int zipCode_18idTemp  = Integer.parseInt(zipCode_18id);
+        String courseList_19id=  request.getParameter("courseList58");
+            java.lang.String courseList_19idTemp = null;
+        if(!courseList_19id.equals("")){
+         courseList_19idTemp  = courseList_19id;
+        }
+        String department_20id=  request.getParameter("department60");
+            java.lang.String department_20idTemp = null;
+        if(!department_20id.equals("")){
+         department_20idTemp  = department_20id;
+        }
+        String meetingTime_21id=  request.getParameter("meetingTime62");
+            java.lang.String meetingTime_21idTemp = null;
+        if(!meetingTime_21id.equals("")){
+         meetingTime_21idTemp  = meetingTime_21id;
+        }
+        java.lang.String addInstructor41mtemp = sampleServiceProxyid.addInstructor(instructorId_12idTemp,firstname_13idTemp,lastname_14idTemp,address_15idTemp,city_16idTemp,state_17idTemp,zipCode_18idTemp,courseList_19idTemp,department_20idTemp,meetingTime_21idTemp);
+if(addInstructor41mtemp == null){
+%>
+<%=addInstructor41mtemp %>
+<%
+}else{
+        String tempResultreturnp42 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(addInstructor41mtemp));
+        %>
+        <%= tempResultreturnp42 %>
+        <%
+}
+break;
+case 64:
+        gotMethod = true;
+        String studentId_22id=  request.getParameter("studentId67");
+            java.lang.String studentId_22idTemp = null;
+        if(!studentId_22id.equals("")){
+         studentId_22idTemp  = studentId_22id;
+        }
+        java.lang.String deleteStudent64mtemp = sampleServiceProxyid.deleteStudent(studentId_22idTemp);
+if(deleteStudent64mtemp == null){
+%>
+<%=deleteStudent64mtemp %>
+<%
+}else{
+        String tempResultreturnp65 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deleteStudent64mtemp));
+        %>
+        <%= tempResultreturnp65 %>
+        <%
+}
+break;
+case 69:
+        gotMethod = true;
+        String instructorId_23id=  request.getParameter("instructorId72");
+            java.lang.String instructorId_23idTemp = null;
+        if(!instructorId_23id.equals("")){
+         instructorId_23idTemp  = instructorId_23id;
+        }
+        java.lang.String deleteInstructor69mtemp = sampleServiceProxyid.deleteInstructor(instructorId_23idTemp);
+if(deleteInstructor69mtemp == null){
+%>
+<%=deleteInstructor69mtemp %>
+<%
+}else{
+        String tempResultreturnp70 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(deleteInstructor69mtemp));
+        %>
+        <%= tempResultreturnp70 %>
+        <%
+}
+break;
+}
+} catch (Exception e) { 
+%>
+Exception: <%= org.eclipse.jst.ws.util.JspUtils.markup(e.toString()) %>
+Message: <%= org.eclipse.jst.ws.util.JspUtils.markup(e.getMessage()) %>
+<%
+return;
+}
+if(!gotMethod){
+%>
+result: N/A
+<%
+}
+%>
+</BODY>
+</HTML>

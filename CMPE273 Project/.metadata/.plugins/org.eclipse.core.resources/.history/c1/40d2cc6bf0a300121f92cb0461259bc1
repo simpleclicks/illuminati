@@ -1,0 +1,23 @@
+package Connections;
+
+import javax.jws.WebService;
+
+@WebService
+public class Service {
+
+	DatabaseConnection db = new DatabaseConnection();
+	
+	Service() {
+
+	}
+
+	public String helloWorld() {
+		return "Hello";
+	}
+	
+	public String addStudent(String studentId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList)
+	{
+		return db.addStudent(studentId, firstname, lastname, address, city, state, zipCode, courseList);
+	}
+
+}

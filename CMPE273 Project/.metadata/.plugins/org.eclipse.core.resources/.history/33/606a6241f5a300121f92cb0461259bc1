@@ -1,0 +1,34 @@
+package Connections;
+
+import java.text.SimpleDateFormat;
+
+import javax.jws.WebService;
+
+@WebService
+public class Service {
+
+	DatabaseConnection db = new DatabaseConnection();
+	
+	public Service() {
+
+	}
+	
+	public String addStudent(String studentId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList)
+	{
+		return db.addStudent(studentId, firstname, lastname, address, city, state, zipCode, courseList);
+	}
+	
+	public String addInstructor(String instructorId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList, 
+			String department, String meetingTime)
+	{
+		 SimpleDateFormat parse = new SimpleDateFormat("dd. MMM yyyy hh:mm:ss");
+		 java.util.Date parsedMeetingTime = parse.parse(meetingTime);
+		return db.addInstructor(instructorId, firstname, lastname, address, city, state, zipCode, courseList,department,parsedMeetingTime);
+	}
+	
+	public String addStudent(String studentId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList)
+	{
+		return db.addStudent(studentId, firstname, lastname, address, city, state, zipCode, courseList);
+	}
+
+}

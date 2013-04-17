@@ -1,0 +1,30 @@
+<%@page contentType="text/html;charset=UTF-8"%><HTML>
+<HEAD>
+<TITLE>Methods</TITLE>
+</HEAD>
+<BODY>
+<H1>Methods</H1>
+<UL>
+<LI><A HREF="Input.jsp?method=2" TARGET="inputs"> getEndpoint()</A></LI>
+<LI><A HREF="Input.jsp?method=5" TARGET="inputs"> setEndpoint(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=10" TARGET="inputs"> getService()</A></LI>
+<LI><A HREF="Input.jsp?method=13" TARGET="inputs"> deleteCourse(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=18" TARGET="inputs"> addCourse(java.lang.String,java.lang.String,java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=27" TARGET="inputs"> deleteStudent(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=32" TARGET="inputs"> deleteInstructor(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=37" TARGET="inputs"> assignInstructor(java.lang.String,java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=44" TARGET="inputs"> enrollStudent(java.lang.String,java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=51" TARGET="inputs"> unEnrollStudent(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=56" TARGET="inputs"> unAssignInstructor(java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=61" TARGET="inputs"> addStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,int,java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=80" TARGET="inputs"> addInstructor(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.String,java.lang.String)</A></LI>
+<LI><A HREF="Input.jsp?method=103" TARGET="inputs"> listStudents()</A></LI>
+<LI><A HREF="Input.jsp?method=106" TARGET="inputs"> listCourse()</A></LI>
+<LI><A HREF="Input.jsp?method=109" TARGET="inputs"> findPreson()</A></LI>
+<LI><A HREF="Input.jsp?method=112" TARGET="inputs"> findCourse()</A></LI>
+<LI><A HREF="Input.jsp?method=115" TARGET="inputs"> displayCourseInfo()</A></LI>
+<LI><A HREF="Input.jsp?method=118" TARGET="inputs"> displayPersonInfo()</A></LI>
+<LI><A HREF="Input.jsp?method=121" TARGET="inputs"> listInstructors()</A></LI>
+</UL>
+</BODY>
+</HTML>

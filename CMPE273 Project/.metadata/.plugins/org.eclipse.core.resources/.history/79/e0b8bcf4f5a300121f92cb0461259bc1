@@ -1,0 +1,124 @@
+package Connections;
+
+import java.sql.*;
+import java.text.DateFormat;
+
+public class DatabaseConnection {
+
+	Connection conn = null;
+	static ResultSet rs;
+	Statement stmt = null;
+	
+	DatabaseConnection()
+	{
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/univesitydb","root","root");
+			stmt = conn.createStatement();
+			
+			if(!conn.isClosed())
+				System.out.println("Successfully connectiod");
+		}catch(SQLException e)
+		{
+				e.printStackTrace();
+		}
+		catch(InstantiationException e)
+		{
+				e.printStackTrace();
+		}
+		catch(IllegalAccessException e)
+		{
+				e.printStackTrace();
+		}
+		catch(ClassNotFoundException e)
+		{
+				e.printStackTrace();
+		}
+		
+	}
+	
+	public String addStudent(String studentId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList)
+	{
+		String result = "";
+		int rowcount;
+		
+		try
+		{
+			String query =  "Insert into student (studentId,firstName,lastName,address,city,state,zipCode,associatedCourses) values" +
+					" ('"+ studentId+ "', '"+ firstname+ "', '"+lastname+ "', '"+address+ "', '"+city+ "', '"+state+ "', '"+zipCode+ "', '"+courseList+"')" ;
+			rowcount = stmt.executeUpdate(query);
+			if(rowcount > 0)
+			{
+				result = "true";
+				System.out.println("Student inserted successful");
+			}
+			else
+			{
+				result = "false:The data could not be inserted in the databse";
+			}
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
+	public String addInstructor(String instructorId, String firstname, String lastname, String address, String city, String state, int zipCode, String courseList
+			,String department, DateFormat officeHours)
+	{
+		String result = "";
+		int rowcount;
+		
+		try
+		{
+			String query =  "Insert into instructor (studentId,firstName,lastName,address,city,state,zipCode,associatedCourses,department, officeHours) values" +
+					" ('"+ instructorId+ "', '"+ firstname+ "', '"+lastname+ "', '"+address+ "', '"+city+ "', '"+state+ "', '"+zipCode+ "', '"+courseList+ "', '"+
+					department+ "', '"+officeHours+"')" ;
+			rowcount = stmt.executeUpdate(query);
+			if(rowcount > 0)
+			{
+				result = "true";
+				System.out.println("Instructor added successful");
+			}
+			else
+			{
+				result = "false:The data could not be inserted in the databse";
+			}
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public String addCourse(String courseName, String courseSection, DateFormat meetingTime, String location)
+	{
+		String result = "";
+		int rowcount;
+		
+		try
+		{
+			String query =  "Insert into course (courseName,courseSection,meetingTime,location) values" +
+					" ('"+ courseName+ "', '"+ courseSection+ "', '"+meetingTime+ "', '"+location+"')" ;
+			rowcount = stmt.executeUpdate(query);
+			if(rowcount > 0)
+			{
+				result = "true";
+				System.out.println("Course inserted successful");
+			}
+			else
+			{
+				result = "false:The data could not be inserted in the databse";
+			}
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+}
