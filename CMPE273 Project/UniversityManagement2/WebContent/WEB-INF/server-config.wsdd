@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -82,11 +82,11 @@
    <ns1:parameter qname="ns17:instructorId" type="xsd:string"/>
   </ns1:operation>
   <ns1:parameter name="allowedMethods" value="addStudent deleteCourse assignInstructor deleteInstructor findCourse deleteStudent displayPersonInfo displayCourseInfo addCourse unEnrollStudent unAssignInstructor findPreson addInstructor listStudents listInstructors listCourse enrollStudent"/>
-  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="Service"/>
-  <ns1:parameter name="className" value="Connections.Service"/>
-  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="schemaQualified" value="http://Connections"/>
+  <ns1:parameter name="wsdlServicePort" value="Service"/>
+  <ns1:parameter name="className" value="Connections.Service"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://Connections"/>
   <ns1:parameter name="wsdlServiceElement" value="ServiceService"/>
  </ns1:service>
@@ -99,6 +99,74 @@
  <ns1:service name="Version" provider="java:RPC">
   <ns1:parameter name="allowedMethods" value="getVersion"/>
   <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="UniversityDB" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="displayCourseInfo" qname="ns18:displayCourseInfo" returnQName="ns18:displayCourseInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns18="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="displayPersonInfo" qname="ns19:displayPersonInfo" returnQName="ns19:displayPersonInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns19="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="listInstructors" qname="ns20:listInstructors" returnQName="ns20:listInstructorsReturn" returnType="xsd:string" soapAction="" xmlns:ns20="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="unEnrollStudent" qname="ns21:unEnrollStudent" returnQName="ns21:unEnrollStudentReturn" returnType="xsd:string" soapAction="" xmlns:ns21="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns21:studentId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deleteStudent" qname="ns22:deleteStudent" returnQName="ns22:deleteStudentReturn" returnType="xsd:string" soapAction="" xmlns:ns22="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:studentId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="addInstructor" qname="ns23:addInstructor" returnQName="ns23:addInstructorReturn" returnType="xsd:string" soapAction="" xmlns:ns23="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns23:instructorId" type="xsd:string"/>
+   <ns1:parameter qname="ns23:firstname" type="xsd:string"/>
+   <ns1:parameter qname="ns23:lastname" type="xsd:string"/>
+   <ns1:parameter qname="ns23:address" type="xsd:string"/>
+   <ns1:parameter qname="ns23:city" type="xsd:string"/>
+   <ns1:parameter qname="ns23:state" type="xsd:string"/>
+   <ns1:parameter qname="ns23:zipCode" type="xsd:int"/>
+   <ns1:parameter qname="ns23:courseList" type="xsd:string"/>
+   <ns1:parameter qname="ns23:department" type="xsd:string"/>
+   <ns1:parameter qname="ns23:meetingTime" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deleteInstructor" qname="ns24:deleteInstructor" returnQName="ns24:deleteInstructorReturn" returnType="xsd:string" soapAction="" xmlns:ns24="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns24:instructorId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="enrollStudent" qname="ns25:enrollStudent" returnQName="ns25:enrollStudentReturn" returnType="xsd:string" soapAction="" xmlns:ns25="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns25:studentId" type="xsd:string"/>
+   <ns1:parameter qname="ns25:courseId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="unAssignInstructor" qname="ns26:unAssignInstructor" returnQName="ns26:unAssignInstructorReturn" returnType="xsd:string" soapAction="" xmlns:ns26="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:instructorId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="assignInstructor" qname="ns27:assignInstructor" returnQName="ns27:assignInstructorReturn" returnType="xsd:string" soapAction="" xmlns:ns27="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns27:courseId" type="xsd:string"/>
+   <ns1:parameter qname="ns27:instructorId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="findCourse" qname="ns28:findCourse" returnQName="ns28:findCourseReturn" returnType="xsd:string" soapAction="" xmlns:ns28="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="findPreson" qname="ns29:findPreson" returnQName="ns29:findPresonReturn" returnType="xsd:string" soapAction="" xmlns:ns29="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="listStudents" qname="ns30:listStudents" returnQName="ns30:listStudentsReturn" returnType="xsd:string" soapAction="" xmlns:ns30="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="listCourse" qname="ns31:listCourse" returnQName="ns31:listCourseReturn" returnType="xsd:string" soapAction="" xmlns:ns31="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="addStudent" qname="ns32:addStudent" returnQName="ns32:addStudentReturn" returnType="xsd:string" soapAction="" xmlns:ns32="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns32:studentId" type="xsd:string"/>
+   <ns1:parameter qname="ns32:firstname" type="xsd:string"/>
+   <ns1:parameter qname="ns32:lastname" type="xsd:string"/>
+   <ns1:parameter qname="ns32:address" type="xsd:string"/>
+   <ns1:parameter qname="ns32:city" type="xsd:string"/>
+   <ns1:parameter qname="ns32:state" type="xsd:string"/>
+   <ns1:parameter qname="ns32:zipCode" type="xsd:int"/>
+   <ns1:parameter qname="ns32:courseList" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="addCourse" qname="ns33:addCourse" returnQName="ns33:addCourseReturn" returnType="xsd:string" soapAction="" xmlns:ns33="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns33:courseId" type="xsd:string"/>
+   <ns1:parameter qname="ns33:courseName" type="xsd:string"/>
+   <ns1:parameter qname="ns33:courseSection" type="xsd:string"/>
+   <ns1:parameter qname="ns33:location" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deleteCourse" qname="ns34:deleteCourse" returnQName="ns34:deleteCourseReturn" returnType="xsd:string" soapAction="" xmlns:ns34="http://web.edu" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns34:courseId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addStudent deleteCourse assignInstructor deleteInstructor findCourse displayCourseInfo displayPersonInfo deleteStudent addCourse unEnrollStudent unAssignInstructor findPreson listStudents addInstructor listCourse listInstructors enrollStudent"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="UniversityDB"/>
+  <ns1:parameter name="className" value="edu.web.UniversityDB"/>
+  <ns1:parameter name="wsdlServicePort" value="UniversityDB"/>
+  <ns1:parameter name="schemaQualified" value="http://web.edu"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://web.edu"/>
+  <ns1:parameter name="wsdlServiceElement" value="UniversityDBService"/>
  </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>

@@ -3,3 +3,7 @@ encoding//src/Connections/Service.java=UTF-8
 encoding//src/Connections/ServiceService.java=UTF-8
 encoding//src/Connections/ServiceServiceLocator.java=UTF-8
 encoding//src/Connections/ServiceSoapBindingStub.java=UTF-8
+encoding//src/edu/web/UniversityDB.java=UTF-8
+encoding//src/edu/web/UniversityDBService.java=UTF-8
+encoding//src/edu/web/UniversityDBServiceLocator.java=UTF-8
+encoding//src/edu/web/UniversityDBSoapBindingStub.java=UTF-8

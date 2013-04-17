@@ -1,0 +1,91 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UniversityDBService WSDL service -->
+
+  <service name="UniversityDB" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://web.edu"/>
+      <parameter name="wsdlServiceElement" value="UniversityDBService"/>
+      <parameter name="schemaQualified" value="http://web.edu"/>
+      <parameter name="wsdlServicePort" value="UniversityDB"/>
+      <parameter name="className" value="edu.web.UniversityDBSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="UniversityDB"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="displayCourseInfo" qname="operNS:displayCourseInfo" xmlns:operNS="http://web.edu" returnQName="retNS:displayCourseInfoReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="displayPersonInfo" qname="operNS:displayPersonInfo" xmlns:operNS="http://web.edu" returnQName="retNS:displayPersonInfoReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="listInstructors" qname="operNS:listInstructors" xmlns:operNS="http://web.edu" returnQName="retNS:listInstructorsReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="unEnrollStudent" qname="operNS:unEnrollStudent" xmlns:operNS="http://web.edu" returnQName="retNS:unEnrollStudentReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteStudent" qname="operNS:deleteStudent" xmlns:operNS="http://web.edu" returnQName="retNS:deleteStudentReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addInstructor" qname="operNS:addInstructor" xmlns:operNS="http://web.edu" returnQName="retNS:addInstructorReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstname" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastname" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipCode" xmlns:pns="http://web.edu" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseList" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:department" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:meetingTime" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteInstructor" qname="operNS:deleteInstructor" xmlns:operNS="http://web.edu" returnQName="retNS:deleteInstructorReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="enrollStudent" qname="operNS:enrollStudent" xmlns:operNS="http://web.edu" returnQName="retNS:enrollStudentReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unAssignInstructor" qname="operNS:unAssignInstructor" xmlns:operNS="http://web.edu" returnQName="retNS:unAssignInstructorReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:instructorId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="assignInstructor" qname="operNS:assignInstructor" xmlns:operNS="http://web.edu" returnQName="retNS:assignInstructorReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:instructorId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="findCourse" qname="operNS:findCourse" xmlns:operNS="http://web.edu" returnQName="retNS:findCourseReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="findPreson" qname="operNS:findPreson" xmlns:operNS="http://web.edu" returnQName="retNS:findPresonReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="listStudents" qname="operNS:listStudents" xmlns:operNS="http://web.edu" returnQName="retNS:listStudentsReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="listCourse" qname="operNS:listCourse" xmlns:operNS="http://web.edu" returnQName="retNS:listCourseReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="addStudent" qname="operNS:addStudent" xmlns:operNS="http://web.edu" returnQName="retNS:addStudentReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:studentId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstname" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastname" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:address" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:city" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:state" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:zipCode" xmlns:pns="http://web.edu" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseList" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addCourse" qname="operNS:addCourse" xmlns:operNS="http://web.edu" returnQName="retNS:addCourseReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseName" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:courseSection" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:location" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteCourse" qname="operNS:deleteCourse" xmlns:operNS="http://web.edu" returnQName="retNS:deleteCourseReturn" xmlns:retNS="http://web.edu" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:courseId" xmlns:pns="http://web.edu" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addStudent deleteCourse assignInstructor deleteInstructor findCourse displayCourseInfo displayPersonInfo deleteStudent addCourse unEnrollStudent unAssignInstructor findPreson listStudents addInstructor listCourse listInstructors enrollStudent"/>
+
+  </service>
+</deployment>

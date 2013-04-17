@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 Apr, 2013 10:53:37 PM by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="edu.pojo.Course" table="course" catalog="univesitydb">
+        <id name="courseId" type="string">
+            <column name="courseId" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="courseName" type="string">
+            <column name="courseName" length="45" not-null="true" />
+        </property>
+        <property name="courseSection" type="string">
+            <column name="courseSection" length="45" not-null="true" />
+        </property>
+        <property name="meetingTime" type="timestamp">
+            <column name="meetingTime" length="19" />
+        </property>
+        <property name="location" type="string">
+            <column name="location" length="45" not-null="true" />
+        </property>
+        <set name="coursestudentmaps" inverse="true">
+            <key>
+                <column name="courseId" length="45" not-null="true" />
+            </key>
+            <one-to-many class="edu.pojo.Coursestudentmap" />
+        </set>
+        <set name="courseinstructormaps" inverse="true">
+            <key>
+                <column name="courseId" length="45" />
+            </key>
+            <one-to-many class="edu.pojo.Courseinstructormap" />
+        </set>
+    </class>
+</hibernate-mapping>

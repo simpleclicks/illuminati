@@ -35,22 +35,22 @@ if(getEndpoint2mtemp == null){
         %>
         <%= tempResultreturnp3 %>
         <%
-}
-break;
-case 5:
-        gotMethod = true;
-        String endpoint_0id=  request.getParameter("endpoint8");
-            java.lang.String endpoint_0idTemp = null;
-        if(!endpoint_0id.equals("")){
-         endpoint_0idTemp  = endpoint_0id;
-        }
-        sampleServiceProxyid.setEndpoint(endpoint_0idTemp);
-break;
-case 10:
-        gotMethod = true;
-        Connections.Service getService10mtemp = sampleServiceProxyid.getService();
-if(getService10mtemp == null){
-%>
+        	}
+                break;
+                case 5:
+                        gotMethod = true;
+                        String endpoint_0id=  request.getParameter("endpoint8");
+                            java.lang.String endpoint_0idTemp = null;
+                        if(!endpoint_0id.equals("")){
+                         endpoint_0idTemp  = endpoint_0id;
+                        }
+                        sampleServiceProxyid.setEndpoint(endpoint_0idTemp);
+                break;
+                case 10:
+                        gotMethod = true;
+                        UniversityDB.web.Service getService10mtemp = sampleServiceProxyid.getService();
+                if(getService10mtemp == null){
+        %>
 <%=getService10mtemp %>
 <%
 }else{

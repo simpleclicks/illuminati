@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 Apr, 2013 10:53:37 PM by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="edu.pojo.Instructor" table="instructor" catalog="univesitydb">
+        <id name="instructorId" type="string">
+            <column name="instructorId" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="person" class="edu.pojo.Person" fetch="select">
+            <column name="personId" not-null="true" />
+        </many-to-one>
+        <property name="department" type="string">
+            <column name="department" length="45" />
+        </property>
+        <property name="officeHours" type="time">
+            <column name="officeHours" length="8" />
+        </property>
+        <set name="courseinstructormaps" inverse="true">
+            <key>
+                <column name="instructorId" length="45" />
+            </key>
+            <one-to-many class="edu.pojo.Courseinstructormap" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 Apr, 2013 10:53:37 PM by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="edu.pojo.Person" table="person" catalog="univesitydb">
+        <id name="personId" type="int">
+            <column name="personId" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="firstName" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="45" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="45" />
+        </property>
+        <property name="zipCode" type="java.lang.Integer">
+            <column name="zipCode" />
+        </property>
+        <property name="associatedCourses" type="string">
+            <column name="associatedCourses" length="300" />
+        </property>
+        <set name="students" inverse="true">
+            <key>
+                <column name="personId" not-null="true" />
+            </key>
+            <one-to-many class="edu.pojo.Student" />
+        </set>
+        <set name="instructors" inverse="true">
+            <key>
+                <column name="personId" not-null="true" />
+            </key>
+            <one-to-many class="edu.pojo.Instructor" />
+        </set>
+    </class>
+</hibernate-mapping>

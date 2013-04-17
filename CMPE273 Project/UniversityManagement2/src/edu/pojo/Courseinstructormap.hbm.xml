@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 Apr, 2013 10:53:37 PM by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="edu.pojo.Courseinstructormap" table="courseinstructormap" catalog="univesitydb">
+        <id name="ciid" type="int">
+            <column name="cIId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="course" class="edu.pojo.Course" fetch="select">
+            <column name="courseId" length="45" />
+        </many-to-one>
+        <many-to-one name="instructor" class="edu.pojo.Instructor" fetch="select">
+            <column name="instructorId" length="45" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
